@@ -11,6 +11,8 @@
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
     <dependencies>
@@ -44,6 +46,9 @@
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.13</version>
+                <configuration>
+                    <outputEncoding>UTF-8</outputEncoding>
+                </configuration>
                 <executions>
                     <execution>
                         <id>prepare-agent</id>
