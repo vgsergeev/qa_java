@@ -3,23 +3,27 @@ package com.example.tests.cat;
 import com.example.Cat;
 import com.example.Feline;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import static com.example.utils.TextConstants.PREDATOR_DIET;
 
 @RunWith(MockitoJUnitRunner.class)
-public class CatWithSpyTest {
+public class CatWithMockTest {
 
-    @Spy
-    private Feline felineSpy;
-
-    @InjectMocks
     private Cat cat;
+
+    @Mock
+    private Feline felineMock;
+
+    @Before
+    public void setUpTest() {
+        cat = new Cat(felineMock);
+    }
 
     @Test
     public void testCatSound() {
@@ -27,9 +31,8 @@ public class CatWithSpyTest {
     }
 
     @Test
-    public void testCatDietWithSpy() throws Exception {
-        cat.getFood();
-        Mockito.verify(felineSpy,Mockito.times(1)).eatMeat();
+    public void testCatDietWithMock() throws Exception {
+        Mockito.when(felineMock.eatMeat()).thenReturn(PREDATOR_DIET);
         Assert.assertEquals("Набор еды не для Кота", PREDATOR_DIET, cat.getFood());
     }
 }

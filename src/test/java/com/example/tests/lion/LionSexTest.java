@@ -1,5 +1,6 @@
 package com.example.tests.lion;
 
+import com.example.Feline;
 import com.example.Lion;
 import org.junit.Assert;
 import org.junit.Test;
@@ -27,7 +28,7 @@ public class LionSexTest {
 
     @Test
     public void testLionSexCheck() throws Exception {
-        Lion lion = new Lion(sex);
+        Lion lion = new Lion(sex, new Feline());
         Assert.assertEquals(result,lion.doesHaveMane());
     }
 }

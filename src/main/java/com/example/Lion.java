@@ -6,14 +6,11 @@ import static com.example.utils.TextConstants.SEX_EXCEPTION_MESSAGE;
 
 public class Lion {
 
-    private Feline feline;
-    private boolean hasMane;
+    private final Feline feline;
+    private final boolean hasMane;
 
-    public Lion(Feline feline) {
+    public Lion(String sex, Feline feline) throws Exception {
         this.feline = feline;
-    }
-
-    public Lion(String sex) throws Exception {
         if ("Самец".equals(sex)) {
             hasMane = true;
         } else if ("Самка".equals(sex)) {
