@@ -11,10 +11,7 @@ public class LionSexExceptionTest {
 
     @Test
     public void invalidSexThrowsException() {
-        try {
-          new Lion("Самей", new Feline());
-        } catch (Exception e) {
-            Assert.assertEquals(SEX_EXCEPTION_MESSAGE,e.getMessage());
-        }
+        Exception exception = Assert.assertThrows(Exception.class, () -> new Lion("Самей", new Feline()));
+        Assert.assertEquals(SEX_EXCEPTION_MESSAGE,exception.getMessage());
     }
 }
